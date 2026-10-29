@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { getServer, deleteServer, type Server } from "@/lib/servers/servers";
 import ServerHeader from "@/components/servers/ServerHeader";
+import MonitoringSection from "@/components/servers/monitoring/MonitoringSection";
 import ExecuteCommandPanel from "@/components/servers/ExecuteCommandPanel";
 import EnvironmentPanel from "@/components/servers/EnvironmentPanel";
 import GitRepoPanel from "@/components/servers/GitRepoPanel";
@@ -71,6 +72,8 @@ export default function ServerDetailPage() {
   return (
     <div className="space-y-6">
       <ServerHeader server={server} onEdit={() => {}} onDelete={handleDelete} />
+
+      <MonitoringSection key={id} serverId={id} />
 
       <ExecuteCommandPanel serverId={id} />
 
